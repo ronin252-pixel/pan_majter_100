@@ -1,0 +1,1062 @@
+html
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jozef Baláž - Poctivé strechy z Liptova</title>
+    <style>
+        /* Caterpillar Farebná paleta a Základné štýly */
+        :root {
+            --cat-yellow: #FFCC00;
+            --cat-black: #0A0A0A;
+            --cat-dark-gray: #151515;
+            --cat-light-gray: #222222;
+            --cat-border: #333333;
+            --cat-text-light: #FFFFFF;
+            --cat-text-muted: #A5A5A5;
+            --cat-green: #00E676;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Impact', 'Arial Black', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cat-black);
+            color: var(--cat-text-light);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typografia pre silný kontrast */
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 900;
+        }
+
+        p, li, span, a, label, input, select, textarea {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 500;
+        }
+
+        /* Pomocné triedy */
+        .container {
+            width: 100%;
+            max-width: 600px; /* Perfektná mobilná šírka */
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        .text-yellow {
+            color: var(--cat-yellow);
+        }
+
+        .bg-gray {
+            background-color: var(--cat-dark-gray);
+        }
+
+        /* Výstražné CAT pruhy */
+        .hazard-stripe {
+            height: 10px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--cat-black),
+                var(--cat-black) 10px,
+                var(--cat-yellow) 10px,
+                var(--cat-yellow) 20px
+            );
+        }
+
+        /* Tlačidlá s vysokým kontrastom */
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--cat-yellow);
+            color: var(--cat-black);
+            text-decoration: none;
+            padding: 18px 24px;
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+            background-color: #E6B800;
+        }
+
+        .btn-outline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid var(--cat-yellow);
+            color: var(--cat-yellow);
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 6px;
+            text-align: center;
+            background: transparent;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-outline:active {
+            background-color: rgba(255, 204, 0, 0.1);
+        }
+
+        /* 1. HERO SEKCIJA (Kompletne prekreslená s tvárou a sociálnym dôkazom) */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 1.0)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="0,100 50,20 100,100" fill="%23222" opacity="0.3"/></svg>');
+            background-size: 80px 80px;
+            padding: 40px 16px 35px 16px;
+            text-align: center;
+            border-bottom: 4px solid var(--cat-yellow);
+        }
+
+        /* Profil Majstra - Tvár */
+        .master-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .master-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--cat-yellow);
+            background-color: var(--cat-dark-gray);
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .master-avatar svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .master-name {
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .master-title {
+            font-size: 0.95rem;
+            color: var(--cat-yellow);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* Sociálny dôkaz priamo pod menom */
+        .social-proof-badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cat-border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .stars-row {
+            color: var(--cat-yellow);
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+
+        .stats-row {
+            font-size: 0.8rem;
+            color: var(--cat-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            line-height: 1.05;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--cat-text-muted);
+            margin-bottom: 24px;
+            font-weight: normal;
+        }
+
+        /* MINI NAV MENU */
+        .mini-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin: -20px auto 25px auto;
+            max-width: 568px;
+            padding: 0 16px;
+        }
+
+        .nav-item {
+            background-color: var(--cat-dark-gray);
+            border: 1px solid var(--cat-border);
+            border-radius: 6px;
+            padding: 10px 4px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--cat-text-light);
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .nav-item:active, .nav-item.active {
+            border-color: var(--cat-yellow);
+            color: var(--cat-yellow);
+        }
+
+        .nav-item svg {
+            color: var(--cat-yellow);
+        }
+
+        /* 2. AKO TO FUNGUJE */
+        .workflow-box {
+            background-color: var(--cat-dark-gray);
+            border: 1px solid var(--cat-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .flow-step {
+            display: flex;
+            gap: 16px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .flow-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--cat-light-gray);
+        }
+
+        .flow-step:last-child::before {
+            display: none;
+        }
+
+        .flow-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--cat-black);
+            border: 2px solid var(--cat-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .flow-content h4 {
+            font-size: 1.1rem;
+            color: var(--cat-yellow);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .flow-content p {
+            font-size: 0.9rem;
+            color: var(--cat-text-muted);
+            line-height: 1.4;
+        }
+
+        /* 3. SLUŽBY */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .service-card {
+            background-color: var(--cat-dark-gray);
+            border: 1px solid var(--cat-border);
+            border-radius: 6px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .service-card:active {
+            transform: scale(0.99);
+            border-color: var(--cat-yellow);
+        }
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--cat-text-muted);
+        }
+
+        .service-badge {
+            background-color: var(--cat-yellow);
+            color: var(--cat-black);
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* 4. POCTIVÝ ULTRA KRÁTKY FORMULÁR */
+        .lead-form-section {
+            background-color: #121212;
+            border-top: 3px solid var(--cat-yellow);
+            border-bottom: 3px solid var(--cat-yellow);
+            position: relative;
+        }
+
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--cat-text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            background-color: var(--cat-dark-gray);
+            border: 2px solid var(--cat-light-gray);
+            color: #FFFFFF;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            -webkit-appearance: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--cat-yellow);
+            box-shadow: 0 0 8px rgba(255, 204, 0, 0.25);
+        }
+
+        /* O MAJSTROVI */
+        .about-box {
+            background-color: var(--cat-dark-gray);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--cat-border);
+        }
+
+        .about-quote {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            line-height: 1.4;
+            border-left: 4px solid var(--cat-yellow);
+            padding-left: 12px;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--cat-text-muted);
+            line-height: 1.5;
+        }
+
+        /* PORTFÓLIO */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            background-color: var(--cat-dark-gray);
+            aspect-ratio: 1.2;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--cat-border);
+            cursor: pointer;
+        }
+
+        .gallery-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.85);
+            padding: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--cat-yellow);
+            text-align: center;
+        }
+
+        /* SPODNÁ FIXNÁ LIŠTA */
+        .sticky-call {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(13, 13, 13, 0.95);
+            border-top: 2px solid var(--cat-yellow);
+            padding: 12px 16px;
+            z-index: 999;
+            backdrop-filter: blur(8px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .sticky-call .btn-outline {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            height: 48px;
+        }
+
+        .sticky-call .btn-primary {
+            box-shadow: none;
+            height: 48px;
+            font-size: 1rem;
+        }
+
+        /* Nadpisy sekcií */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            border-bottom: 3px solid var(--cat-yellow);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+
+        /* 5. NOVÝ ÚROVEŇ WOW EFEKTU - SIMULÁCIA AI ASISTENTA */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .phone-mockup {
+            background-color: #000000;
+            border: 4px solid #333333;
+            border-radius: 32px;
+            width: 100%;
+            max-width: 365px;
+            padding: 16px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+            position: relative;
+        }
+
+        .phone-speaker {
+            width: 60px;
+            height: 4px;
+            background-color: #333333;
+            border-radius: 2px;
+            margin: 0 auto 15px auto;
+        }
+
+        .phone-screen {
+            background-color: #101010;
+            border-radius: 18px;
+            padding: 16px;
+            border: 1px solid #222222;
+        }
+
+        /* Animácia procesov */
+        .ai-processing {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ai-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--cat-text-muted);
+        }
+
+        .ai-step.done {
+            color: var(--cat-green);
+        }
+
+        .ai-step.done svg {
+            color: var(--cat-green);
+        }
+
+        .ai-step.active {
+            color: var(--cat-yellow);
+            animation: pulse-active 1.5s infinite;
+        }
+
+        @keyframes pulse-active {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Výsledok pre majstra (Digitálne montérky) */
+        .ai-dashboard {
+            background-color: #181818;
+            border: 1px solid var(--cat-border);
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 12px;
+            display: none; /* Odhalí sa po simulácii sekvencie */
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(15px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .ai-dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+
+        .ai-dash-title {
+            font-size: 0.8rem;
+            color: var(--cat-yellow);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .ai-dash-badge {
+            background-color: rgba(255, 51, 51, 0.15);
+            color: #FF3333;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .ai-dash-row {
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+            color: #FFFFFF;
+        }
+
+        .ai-dash-row strong {
+            color: var(--cat-text-muted);
+            font-weight: normal;
+            display: inline-block;
+            width: 85px;
+        }
+
+        .ai-analysis-box {
+            background-color: rgba(255, 204, 0, 0.05);
+            border-left: 3px solid var(--cat-yellow);
+            padding: 8px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Odsadenie spodku kvôli fixnej lište */
+        .body-padding {
+            padding-bottom: 90px;
+        }
+    </style>
+</head>
+<body class="body-padding">
+
+    <!-- Výstražný CAT pás úplne na vrchu -->
+    <div class="hazard-stripe"></div>
+
+    <!-- Hero Sekcia s tvárou a sociálnym dôkazom -->
+    <header class="hero" id="sekcia-domov">
+        
+        <!-- JOŽO - TVÁR MAJSTRA -->
+        <div class="master-profile">
+            <div class="master-avatar">
+                <!-- Poctivá ilustrácia majstra (Prilba, usmievavá tvár) -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Pozadie -->
+                    <circle cx="50" cy="50" r="48" fill="#1e1e1e"/>
+                    <!-- Tvárový ovál -->
+                    <path d="M50,30 C35,30 35,55 50,65 C65,65 65,30 50,30 Z" fill="#FFCC99"/>
+                    <!-- Brada / fúzy (Drsný pilčícky look) -->
+                    <path d="M38,48 C38,62 50,70 50,70 C50,70 62,62 62,48 C62,48 50,54 38,48 Z" fill="#5c4033"/>
+                    <!-- Úsmev a oči -->
+                    <path d="M45,56 Q50,60 55,56" stroke="#222" stroke-width="2" fill="none"/>
+                    <circle cx="43" cy="42" r="3" fill="#222"/>
+                    <circle cx="57" cy="42" r="3" fill="#222"/>
+                    <!-- Uši -->
+                    <circle cx="33" cy="45" r="5" fill="#FFCC99"/>
+                    <circle cx="67" cy="45" r="5" fill="#FFCC99"/>
+                    <!-- Žltá Caterpillar prilba -->
+                    <path d="M30,32 C30,12 70,12 70,32 C73,32 73,36 70,36 L30,36 C27,36 27,32 30,32 Z" fill="#FFCC00"/>
+                    <rect x="47" y="10" width="6" height="15" fill="#E6B800" rx="1"/>
+                    <!-- Ramená / montérky -->
+                    <path d="M22,85 C22,75 32,70 50,70 C68,70 78,75 78,85 L78,98 L22,98 Z" fill="#1E40AF"/> <!-- Modrá košeľa -->
+                    <path d="M32,75 L38,98 L48,98 L42,73 Z" fill="#FFCC00"/> <!-- Žlté traky montérok -->
+                    <path d="M68,75 L62,98 L52,98 L58,73 Z" fill="#FFCC00"/>
+                </svg>
+            </div>
+            <div class="master-name">JOZEF BALÁŽ</div>
+            <div class="master-title">Majster tesár & pokrývač</div>
+        </div>
+
+        <!-- SOCIÁLNY DÔKAZ HNEĎ POD MENOM -->
+        <div class="social-proof-badge">
+            <span class="stars-row">★★★★★</span>
+            <span class="stats-row">127 striech • 18 rokov praxe • Liptov</span>
+        </div>
+
+        <h2>POCTIVÉ STRECHY PRE VAŠE DETI AJ VNÚČATÁ</h2>
+        <p>Neponúkam doživotné ilúzie. Ponúkam poctivú, chlapskú robotu a krov, ktorý prežije generácie.</p>
+        
+        <button class="btn-primary" onclick="scrollToForm()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z"/>
+            </svg>
+            Rýchly odhad ceny strechy
+        </button>
+    </header>
+
+    <!-- RÝCHLA NAVIGÁCIA -->
+    <nav class="mini-nav">
+        <a href="#sekcia-sluzby" class="nav-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.4-2.4c.4-.4.4-1.1 0-1.4z"/></svg>
+            Služby
+        </a>
+        <a href="#sekcia-fungovanie" class="nav-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            Fungovanie
+        </a>
+        <a href="#sekcia-galeria" class="nav-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16V4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H4l7-9z"/></svg>
+            Galéria
+        </a>
+        <a onclick="scrollToForm()" class="nav-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z"/></svg>
+            Dopyt
+        </a>
+    </nav>
+
+    <!-- AKO TO FUNGUJE (Prepojenie s tvojou nosnou myšlienkou "Digitálne montérky") -->
+    <section class="container" id="sekcia-fungovanie">
+        <h2 class="section-title">PREČO NEDVÍHAM TELEFÓN?</h2>
+        <p style="color: var(--cat-text-muted); margin-bottom: 15px; font-size: 0.95rem;">
+            <strong>Keď som hore na streche s kladivom v ruke, nedvíham telefóny.</strong> Chránim tým svoju bezpečnosť aj kvalitu vašej strechy. Kým ja pracujem, moje <strong>digitálne montérky</strong> robia kancelársku prácu za mňa:
+        </p>
+        
+        <div class="workflow-box">
+            <div class="flow-step">
+                <div class="flow-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cat-yellow)"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+                <div class="flow-content">
+                    <h4>1. Nedovoláte sa mi</h4>
+                    <p>Počujete obsadzovací tón, pretože stojím na krovoch a venujem sa stavbe.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cat-yellow)"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+                </div>
+                <div class="flow-content">
+                    <h4>2. Príde vám okamžitá SMS</h4>
+                    <p>Obratom vám príde automatická správa s odkazom na túto zjednodušenú kartu.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cat-yellow)"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                </div>
+                <div class="flow-content">
+                    <h4>3. Vyplníte 3 bleskové údaje</h4>
+                    <p>Zadáte len meno, telefón a mesto. Žiadne zložité hľadanie rozmerov v projektoch.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cat-yellow)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </div>
+                <div class="flow-content">
+                    <h4>4. AI pripraví podklady a večer vám volám</h4>
+                    <p>Systém spracuje vaše zadanie a ja vám večer z domova volám už s pripraveným plánom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLUŽBY -->
+    <section class="container" id="sekcia-sluzby">
+        <h2 class="section-title">ČO PRE VÁS UROBÍM</h2>
+        <div class="services-list">
+            <div class="service-card" onclick="scrollToForm()">
+                <div class="service-info">
+                    <span class="service-title">Nový krov a kompletná strecha</span>
+                    <span class="service-desc">Od prvého trámu až po finálne pokrytie krytinou.</span>
+                </div>
+                <span class="service-badge">Dopyt</span>
+            </div>
+
+            <div class="service-card" onclick="scrollToForm()">
+                <div class="service-info">
+                    <span class="service-title">Rekonštrukcia striech</span>
+                    <span class="service-desc">Demontáž starej strechy, vyrovnanie krovu a nová krytina.</span>
+                </div>
+                <span class="service-badge">Dopyt</span>
+            </div>
+
+            <div class="service-card" onclick="scrollToForm()">
+                <div class="service-info">
+                    <span class="service-title">Prístrešky & Altánky</span>
+                    <span class="service-desc">Poctivé drevené stavby pre autá alebo posedenie na záhrade.</span>
+                </div>
+                <span class="service-badge">Dopyt</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ULTRA KRÁTKY FORMULÁR -->
+    <section id="dopyt-form" class="lead-form-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--cat-yellow);">RÝCHLA CENOVÁ PONUKA</h2>
+            <p style="color: var(--cat-text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                Nechajte mi na seba kontakt. Moje digitálne montérky dopyt spracujú a ja vám večer zavolám.
+            </p>
+            
+            <form class="lead-form" onsubmit="submitLead(event)">
+                <div class="form-group">
+                    <label for="client-name">Vaše Meno</label>
+                    <input type="text" id="client-name" placeholder="napr. Peter Novák" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="client-phone">Telefónne číslo</label>
+                    <input type="tel" id="client-phone" placeholder="napr. 0905 123 456" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Mesto alebo Obec kde bude stavba</label>
+                    <input type="text" id="location" placeholder="napr. Liptovský Hrádok" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="margin-top: 10px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    ZÁVÄZNE ODOSLAŤ DOPYT
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- O MAJSTROVI (Čistá, uveriteľná človečina) -->
+    <section class="container" id="sekcia-o-mne">
+        <h2 class="section-title">O MNE</h2>
+        <div class="about-box">
+            <div class="about-quote">"Drevo neklame. Keď spravíš niečo narýchlo alebo odfláknuto, mráz a sneh ti to na Liptove rýchlo zrátajú. Preto robím tak, ako keby som staval vlastným deťom."</div>
+            <div class="about-text">
+                Volám sa Jozef Baláž. Krovom a strechám sa venujem už vyše 18 rokov. Nečakajte odo mňa naleštené reči, prezentácie v powerpointe ani predražené kancelárie. Na stavby chodím sám, materiál vyberám osobne na píle a na streche stojím až do posledného dňa. Ak hľadáte niekoho, kto drží slovo, podanie ruky je pre neho zmluva a po odchode vám nechá čistý dvor – ste na správnom mieste.
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFÓLIO / GALÉRIA -->
+    <section class="bg-gray" id="sekcia-galeria">
+        <div class="container">
+            <h2 class="section-title">NAŠA POSLEDNÁ ROBOTA</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <svg class="gallery-svg" viewBox="0 0 200 200">
+                        <rect width="100%" height="100%" fill="#1a1a1a"/>
+                        <line x1="20" y1="180" x2="180" y2="180" stroke="#FFCC00" stroke-width="4"/>
+                        <line x1="20" y1="180" x2="100" y2="30" stroke="#FFCC00" stroke-width="6"/>
+                        <line x1="180" y1="180" x2="100" y2="30" stroke="#FFCC00" stroke-width="6"/>
+                        <line x1="100" y1="30" x2="100" y2="180" stroke="#FFCC00" stroke-width="3"/>
+                        <line x1="60" y1="100" x2="140" y2="100" stroke="#FFCC00" stroke-width="4"/>
+                    </svg>
+                    <div class="gallery-label">Krov Liptovský Mikuláš</div>
+                </div>
+                <div class="gallery-item">
+                    <svg class="gallery-svg" viewBox="0 0 200 200">
+                        <rect width="100%" height="100%" fill="#1a1a1a"/>
+                        <path d="M 0,50 Q 25,25 50,50 Q 75,25 100,50 Q 125,25 150,50 Q 175,25 200,50" stroke="#FFCC00" stroke-width="4" fill="none"/>
+                        <path d="M 0,100 Q 25,75 50,100 Q 75,75 100,100 Q 125,75 150,100 Q 175,75 200,100" stroke="#FFCC00" stroke-width="4" fill="none"/>
+                    </svg>
+                    <div class="gallery-label">Škridlová strecha Ružomberok</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REFERENCIE -->
+    <section class="container">
+        <h2 class="section-title">DOKONČENÉ STRECHY</h2>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Pán Baláž mi robil komplet krov a krytinu. Chlapi makali neuveriteľne. Žiadne prestoje, termín sedel na sekundu a uprataný dvor po odchode ma naozaj šokoval. Super prístup."</p>
+            <span class="review-author">Michal T., Demänová</span>
+        </div>
+    </section>
+
+    <!-- Spodná FIXNÁ mobilná lišta -->
+    <div class="sticky-call">
+        <button class="btn-outline" onclick="simulateCall()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+            </svg>
+            VOLAŤ MAJSTROVI
+        </button>
+        <button class="btn-primary" onclick="scrollToForm()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z"/>
+            </svg>
+            ZÁVÄZNÝ DOPYT
+        </button>
+    </div>
+
+    <!-- 5. SIMULAČNÝ SMARTFÓN MODAL (NOVÝ WOW EFEKT DIGITÁLNYCH MONTÉROK) -->
+    <div id="phoneModal" class="modal-overlay" onclick="closeModal()">
+        <div class="phone-mockup" onclick="event.stopPropagation()">
+            <div class="phone-speaker"></div>
+            <div class="phone-screen">
+                
+                <!-- KROKY SPRACOVANIA AI ASISTENTOM -->
+                <div class="ai-processing" id="processing-steps">
+                    <h3 style="color: var(--cat-yellow); text-align: center; font-size: 1.15rem; margin-bottom: 8px;">DIGITÁLNE MONTÉRKY 🤖</h3>
+                    
+                    <div class="ai-step" id="step1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        <span>Dopyt úspešne prijatý</span>
+                    </div>
+                    <div class="ai-step" id="step2">
+                        <svg width="16" height="16" id="icon-step2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        <span id="text-step2">AI analyzuje zadanú lokalitu...</span>
+                    </div>
+                    <div class="ai-step" id="step3">
+                        <svg width="16" height="16" id="icon-step3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        <span id="text-step3">Príprava podkladov pre Joža...</span>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD PRE MAJSTRA (ČO REÁLNE PRISTANE V MOBILE) -->
+                <div class="ai-dashboard" id="master-dashboard">
+                    <div class="ai-dash-header">
+                        <span class="ai-dash-title">DOPYT DO DIELNE</span>
+                        <span class="ai-dash-badge" id="dash-priority">VYSOKÁ PRIORITA</span>
+                    </div>
+                    
+                    <div class="ai-dash-row"><strong>Zákazník:</strong> <span id="dash-name">...</span></div>
+                    <div class="ai-dash-row"><strong>Telefón:</strong> <span id="dash-phone" style="color: var(--cat-yellow);">...</span></div>
+                    <div class="ai-dash-row"><strong>Mesto:</strong> <span id="dash-loc">...</span></div>
+                    
+                    <!-- AI ANALÝZA -->
+                    <div class="ai-analysis-box">
+                        <div style="font-weight: bold; color: var(--cat-yellow); margin-bottom: 4px; text-transform: uppercase; font-size: 0.75rem;">🤖 Analýza AI Asistenta:</div>
+                        <span id="ai-recommendation">...</span>
+                    </div>
+
+                    <p style="font-size: 0.7rem; color: var(--cat-green); text-align: center; margin-top: 14px; font-weight: bold;">
+                        ✓ Automatická potvrdzujúca SMS bola odoslaná klientovi.
+                    </p>
+                </div>
+
+                <button class="btn-primary" onclick="closeModal()" style="margin-top: 20px; font-size: 0.95rem; padding: 12px;">
+                    ZAVRIEŤ UKÁŽKU
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert pre klasický hovor -->
+    <div id="callAlert" class="custom-alert" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: var(--cat-yellow); color: var(--cat-black); padding: 16px 24px; border-radius: 6px; font-weight: 900; text-transform: uppercase; box-shadow: 0 4px 20px rgba(0,0,0,0.5); z-index: 1001; text-align: center; width: calc(100% - 32px); max-width: 400px;">
+        Vytáčam majstra Baláža:<br>
+        <span style="font-size: 1.5rem; letter-spacing: 1px;">+421 905 123 456</span>
+    </div>
+
+    <script>
+        // Rolovanie priamo k dopytovému formuláru
+        function scrollToForm() {
+            var formSection = document.getElementById('dopyt-form');
+            if(formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(function() {
+                    formSection.style.borderColor = '#FFFFFF';
+                    setTimeout(function() {
+                        formSection.style.borderColor = 'var(--cat-yellow)';
+                    }, 400);
+                }, 800);
+            }
+        }
+
+        // Spracovanie odoslania dopytového formulára (Simulácia AI montérok)
+        function submitLead(event) {
+            event.preventDefault(); // Zabráni reálnemu načítaniu stránky
+
+            var clientName = document.getElementById('client-name').value;
+            var clientPhone = document.getElementById('client-phone').value;
+            var location = document.getElementById('location').value;
+
+            // Reset krokov v modale
+            document.getElementById('step1').classList.add('done');
+            document.getElementById('step2').className = 'ai-step active';
+            document.getElementById('step3').className = 'ai-step';
+            document.getElementById('master-dashboard').style.display = 'none';
+            document.getElementById('processing-steps').style.display = 'flex';
+
+            // Zobrazenie modalného okna
+            document.getElementById('phoneModal').style.display = 'flex';
+
+            // Sekvenčná simulácia krokov pre brutálny WOW efekt
+            setTimeout(function() {
+                // Krok 2 hotový
+                document.getElementById('step2').className = 'ai-step done';
+                document.getElementById('step2').querySelector('svg').innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
+                
+                // Aktivujeme Krok 3
+                document.getElementById('step3').className = 'ai-step active';
+                
+                setTimeout(function() {
+                    // Krok 3 hotový
+                    document.getElementById('step3').className = 'ai-step done';
+                    document.getElementById('step3').querySelector('svg').innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
+
+                    // Vyplníme Jožov AI panel s dopytom
+                    document.getElementById('dash-name').innerText = clientName;
+                    document.getElementById('dash-phone').innerText = clientPhone;
+                    document.getElementById('dash-loc').innerText = location;
+
+                    // AI asistent vygeneruje odporúčaný postup na základe lokality
+                    var aiRec = `Lokalita ${location} spadá pod horskú oblasť Liptova. Na základe nadmorskej výšky sa odporúča navrhnúť zosilnený krov kvôli zaťaženiu snehom a poctivú betónovú krytinu. Pripravená šablóna SMS: "Ahoj Jozef, pozriem sa ti na to dnes večer."`;
+                    document.getElementById('ai-recommendation').innerText = aiRec;
+
+                    // Skryjeme procesné kroky, ukážeme prekrásny hotový dashboard pre Joža
+                    setTimeout(function() {
+                        document.getElementById('processing-steps').style.display = 'none';
+                        document.getElementById('master-dashboard').style.display = 'block';
+                    }, 600);
+
+                }, 1200);
+            }, 1000);
+
+            // Reset formulára na webe
+            event.target.reset();
+        }
+
+        // Zatvorenie modalného okna
+        function closeModal() {
+            document.getElementById('phoneModal').style.display = 'none';
+        }
+
+        // Simulácia klasického telefonátu
+        function simulateCall() {
+            var alertBox = document.getElementById('callAlert');
+            alertBox.style.display = 'block';
+
+            setTimeout(function() {
+                alertBox.style.opacity = '0';
+                alertBox.style.transition = 'opacity 0.5s ease';
+                setTimeout(function() {
+                    alertBox.style.display = 'none';
+                    alertBox.style.opacity = '1';
+                }, 500);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
